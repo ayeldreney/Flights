@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
+import { FlightRm } from '../api/models';
+import { FlightService } from '../api/services/flight.service';
+
 
 @Component({
   selector: 'app-search-flights',
@@ -6,11 +10,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-flights.component.css']
 })
 export class SearchFlightsComponent implements OnInit {
-  constructor() { }
+
+
+
+  searchResult: FlightRm[] = [];
+
+
+
+
+  constructor(private flightService: FlightService) { }
 
   ngOnInit(): void {
    
     }
+
+  search() {
+    this.flightService.searchFlight({}).subscribe(responce => this.searchResult = responce, this.handleError);
+  }
+
+
+
+  private handleError(err: any) {
+    console.log(err)
+
+  }
 
 
 

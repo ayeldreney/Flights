@@ -1,0 +1,12 @@
+{
+
+  "input": "http://localhost:5054/swagger/v1/swagger.json",
+  "output": "src/app/api",
+  "skipJsonSuffix": true,
+  "removeStaleFiles": true
+
+
+
+
+
+}

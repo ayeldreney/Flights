@@ -9,16 +9,21 @@ import { FlightService } from '../api/services/flight.service';
   templateUrl: './search-flights.component.html',
   styleUrls: ['./search-flights.component.css']
 })
-export class SearchFlightsComponent implements OnInit {
 
+
+
+
+export class SearchFlightsComponent implements OnInit {
 
 
   searchResult: FlightRm[] = [];
 
 
+  constructor(private flightService: FlightService) {
+    
+  }
 
-
-  constructor(private flightService: FlightService) { }
+  
 
   ngOnInit(): void {
    

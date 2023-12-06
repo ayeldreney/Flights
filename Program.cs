@@ -10,7 +10,11 @@ builder.Services.AddSwaggerGen(c => {
     Url= "https://localhost:7280"
 
     });
-    c.CustomOperationIds(c => $"{c.ActionDescriptor.RouteValues["action"]+ c.ActionDescriptor.RouteValues["controller"]}");
+
+
+
+	c.CustomOperationIds(c => $"{c.ActionDescriptor.RouteValues["action"] + c.ActionDescriptor.RouteValues["controller"]}");
+
 });   
 
 var app = builder.Build();

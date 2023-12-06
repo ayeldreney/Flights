@@ -30,7 +30,12 @@ export class SearchFlightsComponent implements OnInit {
     }
 
   search() {
-    this.flightService.searchFlight({}).subscribe(responce => this.searchResult = responce, this.handleError);
+    this.flightService.searchFlight({}).subscribe(responce => this.searchResult = responce, this.handleError, () => {
+      console.log("search completed")
+    });
+
+  
+
   }
 
 

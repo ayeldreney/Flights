@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
+import { FlightService } from '../api/services';
 @Component({
   selector: 'app-book-flight',
   templateUrl: './book-flight.component.html',
-  styleUrls: ['./book-flight.component.css']
+  styleUrls: ['./book-flight.component.css'],
+  providers: [FlightService]
 })
 export class BookFlightComponent implements OnInit {
 
@@ -11,8 +13,11 @@ export class BookFlightComponent implements OnInit {
   flightId: string = "not loaded";
 
 
+
+
+
   constructor(private route: ActivatedRoute) {
-    this.route.paramMap.subscribe(p => this.flightId = p.get("flightId")?? 'not passed')
+   
   } 
 
 
@@ -20,9 +25,13 @@ export class BookFlightComponent implements OnInit {
 
 
   ngOnInit(): void {
-       
+    this.route.paramMap.subscribe(p => this.findFlight(p.get("flightId")))
     }
 
+
+  private findFlight = (flightId: string | null) => {
+    this.flightId = flightId ?? "not passed";
+  }
 
 
 

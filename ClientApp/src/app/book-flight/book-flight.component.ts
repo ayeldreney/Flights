@@ -1,5 +1,5 @@
-import { Component,OnInit } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router'
 @Component({
   selector: 'app-book-flight',
   templateUrl: './book-flight.component.html',
@@ -7,7 +7,16 @@ import { Component,OnInit } from '@angular/core';
 })
 export class BookFlightComponent implements OnInit {
 
-  constructor() { } 
+
+  flightId: string = "not loaded";
+
+
+  constructor(private route: ActivatedRoute) {
+    this.route.paramMap.subscribe(p => this.flightId = p.get("flightId")?? 'not passed')
+  } 
+
+
+
 
 
   ngOnInit(): void {

@@ -11,10 +11,6 @@ builder.Services.AddSwaggerGen(c => {
 
     });
 
-
-
-	c.CustomOperationIds(c => $"{c.ActionDescriptor.RouteValues["action"] + c.ActionDescriptor.RouteValues["controller"]}");
-
 });   
 
 var app = builder.Build();

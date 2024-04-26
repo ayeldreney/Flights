@@ -6,16 +6,16 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { FlightRm } from '../../models/flight-rm';
+import { PassengerRm } from '../../models/passenger-rm';
 
-export interface FindFlight$Params {
-  id: string;
+export interface PassengerEmailGet$Params {
+  email: string;
 }
 
-export function findFlight(http: HttpClient, rootUrl: string, params: FindFlight$Params, context?: HttpContext): Observable<StrictHttpResponse<FlightRm>> {
-  const rb = new RequestBuilder(rootUrl, findFlight.PATH, 'get');
+export function passengerEmailGet(http: HttpClient, rootUrl: string, params: PassengerEmailGet$Params, context?: HttpContext): Observable<StrictHttpResponse<PassengerRm>> {
+  const rb = new RequestBuilder(rootUrl, passengerEmailGet.PATH, 'get');
   if (params) {
-    rb.path('id', params.id, {});
+    rb.path('email', params.email, {});
   }
 
   return http.request(
@@ -23,9 +23,9 @@ export function findFlight(http: HttpClient, rootUrl: string, params: FindFlight
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<FlightRm>;
+      return r as StrictHttpResponse<PassengerRm>;
     })
   );
 }
 
-findFlight.PATH = '/Flight/{id}';
+passengerEmailGet.PATH = '/Passenger/{email}';

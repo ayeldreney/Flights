@@ -9,6 +9,11 @@ export class AuthService {
 
   CurrentUser?: User;
 
+  LoginUser(user: User) {
+    console.log("logged in user with email" + user.email)
+    this.CurrentUser = user;
+  }
+
 }
 
 

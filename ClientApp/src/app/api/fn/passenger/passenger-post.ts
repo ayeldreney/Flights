@@ -8,12 +8,12 @@ import { RequestBuilder } from '../../request-builder';
 
 import { NewPassengerDto } from '../../models/new-passenger-dto';
 
-export interface RegisterPassenger$Params {
+export interface PassengerPost$Params {
       body?: NewPassengerDto
 }
 
-export function registerPassenger(http: HttpClient, rootUrl: string, params?: RegisterPassenger$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
-  const rb = new RequestBuilder(rootUrl, registerPassenger.PATH, 'post');
+export function passengerPost(http: HttpClient, rootUrl: string, params?: PassengerPost$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+  const rb = new RequestBuilder(rootUrl, passengerPost.PATH, 'post');
   if (params) {
     rb.body(params.body, 'application/*+json');
   }
@@ -28,4 +28,4 @@ export function registerPassenger(http: HttpClient, rootUrl: string, params?: Re
   );
 }
 
-registerPassenger.PATH = '/Passenger';
+passengerPost.PATH = '/Passenger';

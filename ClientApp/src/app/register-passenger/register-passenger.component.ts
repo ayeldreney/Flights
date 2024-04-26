@@ -1,9 +1,8 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PassengerService } from './../api/services/passenger.service';
-import { FormBuilder } from '@angular/forms'
-import { first } from 'rxjs';
-
-
+import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../auth/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -13,7 +12,9 @@ import { first } from 'rxjs';
 })
 export class RegisterPassengerComponent implements OnInit {
 
-  constructor(private passengerService: PassengerService, private formBuilder: FormBuilder) { }
+  constructor(private passengerService: PassengerService, private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) { }
 
   form = this.formBuilder.group({
     email: [''],
@@ -28,12 +29,20 @@ export class RegisterPassengerComponent implements OnInit {
        
   }
 
+  checkPassgenger(): void {
+    const params = { email: this.form.get('email')?.value }
 
-  register(): void {
+
+
+
+
+  }
+
+
+  register() {
     console.log("form values", this.form.value)
-    this.passengerService.registerPassenger({ body: this.form.value }).subscribe(
-      _ => console.log("form posted to server")
-    );
+    
+   
 
   }
 
